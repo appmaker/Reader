@@ -848,7 +848,9 @@
 
 			mailComposer.mailComposeDelegate = self; // Set the delegate
 
-			[self presentModalViewController:mailComposer animated:YES];
+            [self presentViewController:mailComposer animated:YES completion:^{
+                
+            }];
 		}
 	}
 
@@ -879,7 +881,9 @@
 		if ((result == MFMailComposeResultFailed) && (error != NULL)) NSLog(@"%@", error);
 	#endif
 
-	[self dismissModalViewControllerAnimated:YES]; // Dismiss
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark ThumbsViewControllerDelegate methods
@@ -888,7 +892,9 @@
 {
 	[self updateToolbarBookmarkIcon]; // Update bookmark icon
 
-	[self dismissModalViewControllerAnimated:NO]; // Dismiss
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)thumbsViewController:(ThumbsViewController *)viewController gotoPage:(NSInteger)page
